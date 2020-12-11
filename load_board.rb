@@ -9,11 +9,11 @@ $timer = 1
 # Method to give default/empty board
 def board(x,y)
     if y%14==0
-        return "|".colorize(:color => :light_blue, :background => :light_green)
+        return "o".colorize(:color => :light_cyan, :background => :light_green)
     elsif x%7==0
-        return "|".colorize(:color => :light_blue, :background => :light_green)
+        return "o".colorize(:color => :light_cyan, :background => :light_green)
     else
-        return " ".colorize(:color => :light_blue, :background => :light_red)
+        return "#".colorize(:color => :light_magenta, :background => :light_white)
     end
 end
 
@@ -143,5 +143,4 @@ end
 board_cycle(state0)
 
 
-# puts String.colors 
 
