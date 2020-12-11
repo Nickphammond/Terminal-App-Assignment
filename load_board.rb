@@ -1,6 +1,7 @@
 
 require 'io/console'
 require "timeout"
+require 'colorize'
 
 state0 = 20
 $timer = 1
@@ -8,11 +9,11 @@ $timer = 1
 # Method to give default/empty board
 def board(x,y)
     if y%14==0
-        return "|"
+        return "|".colorize(:color => :light_blue, :background => :light_green)
     elsif x%7==0
-        return "|"
+        return "|".colorize(:color => :light_blue, :background => :light_green)
     else
-        return " "
+        return " ".colorize(:color => :light_blue, :background => :light_red)
     end
 end
 
@@ -142,8 +143,5 @@ end
 board_cycle(state0)
 
 
-# $dog = 3
-# def ad
-#  return $dog = $dog + 1
-# end
-# puts ad
+# puts String.colors 
+
