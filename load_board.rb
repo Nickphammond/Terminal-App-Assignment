@@ -3,7 +3,7 @@ require 'io/console'
 require "timeout"
 
 state0 = 0
-timer = 1
+$timer = 1
 
 # Method to give default/empty board
 def board(x,y)
@@ -18,10 +18,11 @@ end
 
 
 def give_state(prev)
-    if timer%20 == 0
+    if $timer%20 == 0
         return (prev +1)%15
     else
-        timer = timer + 1
+        
+        return prev
     end
 end
 
@@ -108,12 +109,13 @@ def board_cycle(state)
     if state != 100
         print_board(21,42,state)
         begin
-            status = Timeout::timeout(2) {
+            status = Timeout::timeout(0.1) {
                 
                 str = STDIN.getch
                 system("clear")
-                puts state
-                puts input_to_pos(str)
+
+                
+
                 if input_to_pos(str) != 1000
                     if input_to_pos(str) == state
                         return board_cycle(100)
@@ -122,10 +124,11 @@ def board_cycle(state)
                     return "end"
                 end
                 
-                
+                puts "blah"
                 return nick.to_i
             }
         rescue
+            $timer = $timer + 1
             state = give_state(state)
             board_cycle(state)
         end
@@ -134,5 +137,13 @@ def board_cycle(state)
     end
 end
 
+
+
 board_cycle(state0)
 
+
+# $dog = 3
+# def ad
+#  return $dog = $dog + 1
+# end
+# puts ad
