@@ -2,7 +2,7 @@
 require 'io/console'
 require "timeout"
 
-state0 = 0
+state0 = 20
 $timer = 1
 
 # Method to give default/empty board
@@ -19,7 +19,7 @@ end
 
 def give_state(prev)
     if $timer%20 == 0
-        return (prev +1)%15
+        return rand(1..25)
     else
         
         return prev
